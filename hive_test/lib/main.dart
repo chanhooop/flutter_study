@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive_test/controllers/hive_controller.dart';
 import 'package:hive_test/models/person.dart';
 import 'package:hive_test/views/menu_screens.dart';
 
 void main() async {
-  await Hive.initFlutter();
-  Hive.registerAdapter(PersonAdapter());
+  HiveController().openHive();
   runApp(const MyApp());
 }
 
