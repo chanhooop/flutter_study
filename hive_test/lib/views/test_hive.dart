@@ -35,7 +35,7 @@ class _TestHiveState extends State<TestHive> {
       onTap: FocusScope.of(context).unfocus,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Sqlite Screen'),
+          title: Text('Hive Screen'),
         ),
         body: Column(children: [
           Padding(
@@ -55,7 +55,7 @@ class _TestHiveState extends State<TestHive> {
           Padding(
             padding: EdgeInsets.all(10),
             child: TextField(
-              decoration: InputDecoration(labelText: '친구들'),
+              decoration: InputDecoration(labelText: '친구이름'),
               controller: friendsTxtCtr,
             ),
           ),
@@ -64,8 +64,8 @@ class _TestHiveState extends State<TestHive> {
             children: [
               ElevatedButton(
                 onPressed: () async {
-                  hiveController.insertHive(
-                      nameTxtCtr.text, Person(nameTxtCtr.text, int.parse(ageTxtCtr.text) , []));
+                  hiveController.insertHive(nameTxtCtr.text,
+                      Person(nameTxtCtr.text, int.parse(ageTxtCtr.text), []));
                 },
                 child: Text('insert'),
               ),
@@ -83,13 +83,15 @@ class _TestHiveState extends State<TestHive> {
                 child: Text('update'),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  hiveController.deleteHive(nameTxtCtr.text);
+                },
                 child: Text('delete'),
               ),
             ],
           ),
           const Padding(
-            padding:  EdgeInsets.symmetric(vertical: 20),
+            padding: EdgeInsets.symmetric(vertical: 20),
             child: Divider(
               thickness: 10,
             ),
@@ -100,27 +102,27 @@ class _TestHiveState extends State<TestHive> {
               child: ValueListenableBuilder(
                 valueListenable: Hive.box<Person>('person').listenable(),
                 builder: (BuildContext context, box, Widget? child) {
+                  if (box.length == 0) return Text('데이터가 없습니다');
+
                   return ListView.separated(
-                      itemBuilder: (_, index){
+                      itemBuilder: (_, index) {
                         final item = box.getAt(index);
 
                         return Row(
                           children: [
                             Text('${item?.name} / '),
                             Text('${item?.age} / '),
-                            Text('${item?.friends![0].love} / ')
                           ],
                         );
-
                       },
-                      separatorBuilder: (_, index){
+                      separatorBuilder: (_, index) {
                         return Padding(
-                            padding: EdgeInsets.symmetric(vertical: 16.0),
-                            child: Divider(),
+                          padding: EdgeInsets.symmetric(vertical: 16.0),
+                          child: Divider(),
                         );
                       },
                       itemCount: box.length);
-                  },
+                },
               ),
             ),
           ),
