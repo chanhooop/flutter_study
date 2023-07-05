@@ -35,11 +35,7 @@ class MenuScreen extends StatelessWidget {
                   _gotoPage(context, AppleWatchScreen());
                 },
                 child: Text('Apple Watch')),
-            ElevatedButton(
-                onPressed: () {
-                  _gotoPage(context, SqliteScreen());
-                },
-                child: Text('Sqlite Screen')),
+
           ],
         ),
       ),
