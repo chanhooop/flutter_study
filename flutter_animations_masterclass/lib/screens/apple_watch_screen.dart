@@ -20,31 +20,43 @@ class _AppleWatchScreenState extends State<AppleWatchScreen> {
       body: Center(
         child: CustomPaint(
           painter: AppleWatchPaintr(),
-          size: Size(300,300),
+          size: Size(300, 300),
         ),
       ),
     );
   }
 }
 
-class AppleWatchPaintr extends CustomPainter{
-
-
+class AppleWatchPaintr extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    Rect rect = Rect.fromLTWH(0, 0, size.width, size.height);
-
-    Paint paint = Paint()..color = Colors.blue;
-    
-    // TODO: implement paint
-    canvas.drawRect(rect, paint);
-    // canvas.drawCircle(c, radius, paint)
-
+    Paint redCirclePaint = Paint()
+      ..color = Colors.redAccent.shade200.withOpacity(0.5)
+      ..strokeWidth = 25
+      ..strokeJoin = StrokeJoin.bevel
+      ..style = PaintingStyle.stroke;
+    Paint blueCirclePaint = Paint()
+      ..color = Colors.blueAccent.shade200.withOpacity(0.5)
+      ..strokeWidth = 25
+      ..strokeJoin = StrokeJoin.bevel
+      ..style = PaintingStyle.stroke;
+    Paint greenCirclePaint = Paint()
+      ..color = Colors.greenAccent.shade200.withOpacity(0.5)
+      ..strokeWidth = 25
+      ..strokeJoin = StrokeJoin.bevel
+      ..style = PaintingStyle.stroke;
+    canvas.drawCircle(Offset(size.width / 2, size.height / 2), size.width / 2,
+        redCirclePaint);
+    canvas.drawCircle(Offset(size.width / 2, size.height / 2),
+        (size.width / 2) * 0.8, blueCirclePaint);
+    canvas.drawCircle(Offset(size.width / 2, size.height / 2),
+        (size.width / 2) * 0.6, greenCirclePaint);
   }
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     // TODO: implement shouldRepaint
-    throw UnimplementedError();
+    // throw UnimplementedError();
+    return true;
   }
 }
