@@ -38,8 +38,8 @@ class _AppleWatchScreenState extends State<AppleWatchScreen>
   @override
   void dispose() {
     // TODO: implement dispose
-    super.dispose();
     _animationController.dispose();
+    super.dispose();
   }
 
   @override
