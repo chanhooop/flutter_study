@@ -9,14 +9,14 @@ class SwipingCardScreen extends StatefulWidget {
   State<SwipingCardScreen> createState() => _SwipingCardScreenState();
 }
 
-class _SwipingCardScreenState extends State<SwipingCardScreen> with SingleTickerProviderStateMixin{
-
+class _SwipingCardScreenState extends State<SwipingCardScreen>
+    with SingleTickerProviderStateMixin {
   late final size = MediaQuery.of(context).size;
 
   late final AnimationController _position = AnimationController(
     vsync: this,
     duration: Duration(seconds: 1),
-    lowerBound: size.width * -1 -100,
+    lowerBound: size.width * -1 - 100,
     upperBound: size.width + 100,
     value: 0.0, // 초기값 설정, 설정 안할시 lowerBound가 초기값
   );
@@ -26,22 +26,27 @@ class _SwipingCardScreenState extends State<SwipingCardScreen> with SingleTicker
     end: 15,
   );
 
-  void _onHorizontalDragUpdate(DragUpdateDetails details){
+  late final Tween<double> _scale = Tween(
+    begin: 0.8,
+    end: 1,
+  );
+
+  void _onHorizontalDragUpdate(DragUpdateDetails details) {
     _position.value += details.delta.dx;
   }
 
-  void _onHorizontalDragEnd(){
-    final bound = size.width-200;
-    final dropZone = size.width+100;
+  void _onHorizontalDragEnd() {
+    final bound = size.width - 200;
+    final dropZone = size.width + 100;
 
-    if(_position.value.abs() >= bound){
-      if(_position.value.isNegative){
+    if (_position.value.abs() >= bound) {
+      if (_position.value.isNegative) {
         _position.animateTo(dropZone * -1);
-      }else{
-      _position.animateTo(dropZone);
+      } else {
+        _position.animateTo(dropZone);
       }
-    }else{
-    _position.animateTo(0,curve: Curves.easeOut);
+    } else {
+      _position.animateTo(0, curve: Curves.easeOut);
     }
   }
 
@@ -54,48 +59,79 @@ class _SwipingCardScreenState extends State<SwipingCardScreen> with SingleTicker
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Swiping Card'),
       ),
       body: AnimatedBuilder(
         animation: _position,
-        builder: (context,child){
-          final angle = _rotation.transform((_position.value + size.width/2) / size.width);
+        builder: (context, child) {
+          final angle = _rotation
+              .transform((_position.value + size.width / 2) / size.width);
           print(angle);
-           return Stack(
-             alignment: Alignment.topCenter,
-             children: [
-               Positioned(
-                 top: 100,
-                 child: GestureDetector(
-                   onHorizontalDragUpdate: (details){
-                     _onHorizontalDragUpdate(details);
-                   },
-                   onHorizontalDragEnd: (details){
-
-                     _onHorizontalDragEnd();
-                   },
-                   child: Transform.translate(
-                     offset: Offset(_position.value, 0.0),
-                     child: Transform.rotate(
-                       angle: angle * (pi /180),
-                       child: Material(
-                         elevation: 10,
-                         color: Colors.red.shade100,
-                         child: SizedBox(
-                           width: size.width * 0.8,
-                           height: size.height * 0.5,
-                         ),
-                       ),
-                     ),
-                   ),
-                 ),
-               ),
-             ],
-           );
+          final scale = _scale.transform(_position.value.abs() / size.width);
+          return Stack(
+            alignment: Alignment.topCenter,
+            children: [
+              Positioned(
+                top: 100,
+                child: Transform.scale(
+                  scale: scale,
+                  child: Material(
+                    elevation: 10,
+                    color: Colors.blue.shade100,
+                    child: SizedBox(
+                      width: size.width * 0.8,
+                      height: size.height * 0.5,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 100,
+                child: GestureDetector(
+                  onHorizontalDragUpdate: (details) {
+                    _onHorizontalDragUpdate(details);
+                  },
+                  onHorizontalDragEnd: (details) {
+                    _onHorizontalDragEnd();
+                  },
+                  child: Transform.translate(
+                    offset: Offset(_position.value, 0.0),
+                    child: Transform.rotate(
+                      angle: angle * (pi / 180),
+                      child: Material(
+                        elevation: 10,
+                        color: Colors.red.shade100,
+                        child: SizedBox(
+                          width: size.width * 0.8,
+                          height: size.height * 0.5,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          );
         },
+      ),
+    );
+  }
+}
+
+class Card extends StatelessWidget {
+  final int index;
+  const Card({Key? key, required this.index}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return Material(
+      elevation: 10,
+      child: SizedBox(
+        width: size.width * 0.8,
+        height: size.height * 0.5,
       ),
     );
   }
