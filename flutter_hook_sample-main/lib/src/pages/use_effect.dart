@@ -15,11 +15,19 @@ class UseEffectPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final counter = useState(0);
-    test();
+
+    /// Fuction을 return 한다. 빈 배열을 넣어주면 initState()와 같은 효과, 최초한번 실행
     useEffect(() {
       print('useEffect 발동!!');
       return () {};
     }, [specificValue]);
+
+    /// 배열값에 아무것도 안넣으면 매번 호출과 동일한 효과 (useEffect((){}) = test())
+    // useEffect(() {
+    //   print('useEffect 발동!!');
+    //   return () {};
+    // });
+    // test();
     print('화면 갱신 됩니다.');
     return Scaffold(
       appBar: AppBar(

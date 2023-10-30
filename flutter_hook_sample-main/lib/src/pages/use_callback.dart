@@ -13,14 +13,14 @@ class UseCallBackPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     var count = useState(0);
-    var callback = useMemoized(() {
-      print('memorize');
-      return add(2, 5);
-    }, []);
-    // var callback = useCallback(() {
-    //   print('callback');
-    //   return add(1, 2);
+    // var callback = useMemoized(() {
+    //   print('memorize');
+    //   return add(2, 5);
     // }, []);
+    var callback = useCallback(() {
+      print('callback');
+      return add(1, 2);
+    }, []);
 
     print('rebuild');
     return Scaffold(
