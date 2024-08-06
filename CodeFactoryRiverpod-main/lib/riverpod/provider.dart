@@ -9,16 +9,13 @@ final filteredShoppingListProvider = Provider<List<ShoppingItemModel>>(
     if (filterState == FilterState.all) {
       return shoppingListState;
     }
-    return shoppingListState.where((e) =>
-      filterState == FilterState.spicy
-        ? e.isSpicy
-        : !e.isSpicy
-    ).toList();
-    return [];
+    return shoppingListState
+        .where((e) => filterState == FilterState.spicy ? e.isSpicy : !e.isSpicy)
+        .toList();
   },
 );
 
-enum FilterState{
+enum FilterState {
   notSpicy,
   spicy,
   all,

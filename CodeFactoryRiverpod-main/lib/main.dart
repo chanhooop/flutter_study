@@ -42,7 +42,7 @@ void main() {
                 }
                 throw Exception();
               },
-              transitionDuration: const Duration(milliseconds: 200),
+              transitionDuration: const Duration(milliseconds: 500),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
                 const begin = Offset(1.0, 0.0);
