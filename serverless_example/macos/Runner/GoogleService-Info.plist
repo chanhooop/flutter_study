@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyDpnsDb5vQP0d32i3xCJyF2_7GEEcm4SVk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>578756183889</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.serverlessexample.serverlessExample</string>
+	<key>PROJECT_ID</key>
+	<string>serverless-1a08f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>serverless-1a08f.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:578756183889:ios:8b5487017324c4c48d7570</string>
+</dict>
+</plist>
