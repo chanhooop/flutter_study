@@ -28,17 +28,3 @@ class MyApp extends ConsumerWidget {
     );
   }
 }
-
-class test extends ConsumerStatefulWidget {
-  const test({super.key});
-
-  @override
-  ConsumerState createState() => _testState();
-}
-
-class _testState extends ConsumerState<test> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
