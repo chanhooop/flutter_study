@@ -23,7 +23,7 @@ final testViewNotifierProvider =
 
 typedef _$TestViewNotifier = AutoDisposeNotifier<Object?>;
 String _$testViewAsyncNotifierHash() =>
-    r'cebe6d2b6bbe32533f5eb909ce7bfdfb8b4a7dce';
+    r'e5142137a97c34e20c8dec4f6467e57d5064a3d6';
 
 /// See also [TestViewAsyncNotifier].
 @ProviderFor(TestViewAsyncNotifier)

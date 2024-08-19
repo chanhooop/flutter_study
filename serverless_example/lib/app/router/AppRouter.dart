@@ -2,7 +2,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:serverless_example/app/view/test_view.dart';
-import 'package:serverless_example/app/view/test_view_2.dart';
+import 'package:serverless_example/app/view/test_view_second.dart';
 
 final appGorouterProvider = Provider<GoRouter>((ref) {
 
@@ -30,7 +30,7 @@ final appGorouterProvider = Provider<GoRouter>((ref) {
   }, 
     routes: [
       GoRoute(path: '/', name: 'TestView', builder: (context, routerState) => TestView()),
-      GoRoute(path: '/TestView2', name: 'TestView2', builder: (context, routerState) => TestView2()),
+      GoRoute(path: '/TestViewSecond', name: 'TestViewSecond', builder: (context, routerState) => TestViewSecond()),
     ],
   // refreshListenable: // 리스너
   // routes: [

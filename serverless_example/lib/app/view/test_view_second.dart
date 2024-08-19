@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:serverless_example/app/repository/fetch_repository/activity_provider.dart';
+import 'package:serverless_example/app/service/repository/fetch_repository/activity_provider.dart';
+import 'package:serverless_example/app/service/repository/fetch_repository/home_news.dart';
 import 'package:serverless_example/app/view/test_view_model.dart';
 
 
-class TestView2 extends ConsumerWidget {
-  const TestView2({super.key});
+class TestViewSecond extends ConsumerWidget {
+  const TestViewSecond({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    print('TestView2 화면빌드');
-    final activity = ref.watch(activityProvider(arg: 'TestView2'));
-
+    print('TestViewSecond 화면빌드');
+    final activity = ref.watch(activityProvider(arg: 'TestViewSecond'));
     return Scaffold(
       body: Center(
         child:
@@ -34,7 +34,8 @@ class TestView2 extends ConsumerWidget {
                 onPressed: () => ref.read(testViewNotifierProvider.notifier).changeTestViewModel('test'),
                 // onPressed: () => context.pop(),
               ),
-            ]
+            ],
+            Text('${ref.read(homeNewsProvider).value}'),
           ],
         ),
       ),
