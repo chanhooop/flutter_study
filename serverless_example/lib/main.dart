@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:serverless_example/utils/firebase/firebase_main.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'app/router/AppRouter.dart';
 
 void main() async{
   usePathUrlStrategy();
   await FirebaseMain().firebaseInitializeApp();
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(ScreenUtilInit(
+      designSize: const Size(412, 900),
+      builder: (context, child) => child!,
+      child: const ProviderScope(child: MyApp())));
 }
 
 class MyApp extends ConsumerWidget {

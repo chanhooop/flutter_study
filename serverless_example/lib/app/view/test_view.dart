@@ -63,9 +63,11 @@ class TestView extends ConsumerWidget {
                   Text('hashCode : ${testViewModel.hashCode}'),
                   TextButton(
                     child: Text('changeTestViewModel'),
-                    onPressed: () => ref
+                    onPressed: () { ref
                         .read(testViewAsyncNotifierProvider.notifier)
-                        .changeTestViewModel('test'),
+                        .changeTestViewModel(testViewModel.value!.copyWith(txt: 'test'));
+                    print('확인 : ${testViewModel.value!.txt}');
+                    }
                   ),
                   GestureDetector(
                     onTap: () => ref.invalidate(homeNewsProvider),

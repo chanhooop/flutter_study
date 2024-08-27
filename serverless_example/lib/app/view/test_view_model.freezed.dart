@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TestViewModel {
-  String get txt => throw _privateConstructorUsedError;
+  String? get txt => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TestViewModelCopyWith<TestViewModel> get copyWith =>
@@ -29,7 +29,7 @@ abstract class $TestViewModelCopyWith<$Res> {
           TestViewModel value, $Res Function(TestViewModel) then) =
       _$TestViewModelCopyWithImpl<$Res, TestViewModel>;
   @useResult
-  $Res call({String txt});
+  $Res call({String? txt});
 }
 
 /// @nodoc
@@ -45,13 +45,13 @@ class _$TestViewModelCopyWithImpl<$Res, $Val extends TestViewModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? txt = null,
+    Object? txt = freezed,
   }) {
     return _then(_value.copyWith(
-      txt: null == txt
+      txt: freezed == txt
           ? _value.txt
           : txt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -64,7 +64,7 @@ abstract class _$$TestViewModelImplCopyWith<$Res>
       __$$TestViewModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String txt});
+  $Res call({String? txt});
 }
 
 /// @nodoc
@@ -78,13 +78,13 @@ class __$$TestViewModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? txt = null,
+    Object? txt = freezed,
   }) {
     return _then(_$TestViewModelImpl(
-      txt: null == txt
+      txt: freezed == txt
           ? _value.txt
           : txt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -95,7 +95,7 @@ class _$TestViewModelImpl implements _TestViewModel {
   _$TestViewModelImpl({required this.txt});
 
   @override
-  final String txt;
+  final String? txt;
 
   @override
   String toString() {
@@ -121,10 +121,10 @@ class _$TestViewModelImpl implements _TestViewModel {
 }
 
 abstract class _TestViewModel implements TestViewModel {
-  factory _TestViewModel({required final String txt}) = _$TestViewModelImpl;
+  factory _TestViewModel({required final String? txt}) = _$TestViewModelImpl;
 
   @override
-  String get txt;
+  String? get txt;
   @override
   @JsonKey(ignore: true)
   _$$TestViewModelImplCopyWith<_$TestViewModelImpl> get copyWith =>

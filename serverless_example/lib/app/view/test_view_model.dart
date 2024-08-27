@@ -13,7 +13,7 @@ part 'test_view_model.g.dart';
 @freezed
 class TestViewModel with _$TestViewModel {
   factory TestViewModel({
-    required String txt,
+    required String? txt,
   }) = _TestViewModel;
 }
 
@@ -62,14 +62,15 @@ class TestViewAsyncNotifier extends _$TestViewAsyncNotifier {
 
     // await Future.delayed(Duration(milliseconds: 1000));
     // final activity = await ref.watch(activityProvider(arg: '여기 테스트').future);
-    final homeNewsList = await ref.watch(homeNewsProvider.future);
-    return TestViewModel(txt: '${homeNewsList?.list}');
+    // final homeNewsList = await ref.watch(homeNewsProvider.future);
+    // return TestViewModel(txt: '${homeNewsList?.list}');
+    return TestViewModel(txt: 'asdfasdfdsf');
   }
 
-  Future<void> changeTestViewModel(String str) async {
+  Future<void> changeTestViewModel(TestViewModel testViewModel) async {
     // ref.invalidateSelf();
     await Future.delayed(Duration(milliseconds: 1000));
-    state = AsyncValue.data(TestViewModel(txt: str));
+    state = AsyncValue.data(testViewModel);
     await state;
   }
 }
