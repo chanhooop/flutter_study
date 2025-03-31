@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:serverless_example/app/service/repository/fetch_repository/activity_provider.dart';
 import 'package:serverless_example/app/service/repository/fetch_repository/home_news.dart';
 import 'package:serverless_example/app/view/test_view_model.dart';
+import 'package:serverless_example/app/view/webview/main_webview.dart';
 
 class TestView extends ConsumerWidget {
   const TestView({super.key});
@@ -76,6 +77,10 @@ class TestView extends ConsumerWidget {
                   GestureDetector(
                     onTap: () => context.goNamed('TestView2'),
                     child: Text('${testViewModel.value ?? 'null'}'),
+                  ),
+                  GestureDetector(
+                    onTap: () => context.goNamed(MainWebView.routeName),
+                    child: Text('웹뷰확인'),
                   ),
                 ],
               ),
